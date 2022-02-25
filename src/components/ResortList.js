@@ -38,7 +38,7 @@ const ResortList = () => {
 
           <div className="grid grid-gap-1 grid-row-gap-2 grid-col-4">
 
-          {resorts.map(resort=>( <ResortItem title={resort.title} image ={resort.img} price={resort.price} />))}
+          {resorts.map(resort=>( <ResortItem id={resort.id} title={resort.title} image ={resort.img} price={resort.price} />))}
           
               
     
