@@ -1,12 +1,35 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 
 import ResortItem from "./ResortItem";
-import image1 from "../assets/img/resort1.webp";
-import image2 from "../assets/img/resort2.webp";
-import image3 from "../assets/img/resort3.webp";
-import image4 from "../assets/img/resort4.webp";
+
 
 const ResortList = () => {
+
+  //creating my state
+  const [resorts , setResorts] = useState([{
+    id:0,
+    title:"",
+    price: 0,
+    imageSrc : null
+  }]);
+
+
+  useEffect(()=>{
+
+    const URL = 'http://localhost:5000/resorts'
+    //MAKE AN AJAX request
+
+    fetch(URL)
+    .then(response=>response.json())
+
+    .then(json=>{
+     
+
+      setResorts(json)
+    })
+    .catch(err=>console.log(err))
+
+  }, [])
   return (
     <section id="section-resort-list">
       <div className= "container">
@@ -14,10 +37,14 @@ const ResortList = () => {
           <h1>Featured Resort</h1>
 
           <div className="grid grid-gap-1 grid-row-gap-2 grid-col-4">
-                <ResortItem title="Senca College Room" image = {image1} price="70" />
-                <ResortItem title="Paris Hotel" image = {image2}  price="260"/>
-                <ResortItem title="Trinidad and Tobago private room" image = {image3}  price="150"/>
-                <ResortItem title="Toronto Guest House" image = {image4}  price="65"/>
+
+          {resorts.map(resort=>( <ResortItem title={resort.title} image ={resort.img} price={resort.price} />))}
+          
+              
+    
+            
+  
+  
           </div>
 
       </div>

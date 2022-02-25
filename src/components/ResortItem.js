@@ -5,7 +5,7 @@ const ResortItem = ({title,image,price}) => {
 
     <div className="resort-card">
 
-      <a href = "/"> 
+      <a href = ""> 
           <img src={image} alt=""/>   
       </a> 
 
